@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Bhanu Agarwal | NLP & Python Projects</title>
+
+  <meta
+    name="description"
+    content="Bhanu Agarwal, M.Sc. Natural Language Processing student at the University of Trier. Projects in search, text processing, evaluation, and data analytics."
+  >
+  <meta name="theme-color" content="#111827">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bhanu Agarwal | NLP & Python Projects">
+  <meta
+    property="og:description"
+    content="Projects, experience, and education in natural language processing and Python data analysis."
+  >
+  <meta property="og:url" content="https://bhanu613.github.io/">
+
+  <style>
+    :root {
+      color-scheme: dark;
+
+      --background: #111827;
+      --surface: #192437;
+      --surface-alt: #213047;
+      --text: #edf2f7;
+      --muted: #b9c5d6;
+      --accent: #95e1cd;
+      --accent-hover: #bcf3e5;
+      --border: #394b64;
+      --radius: 16px;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 105px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family:
+        system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    h1 {
+      margin: 12px 0 18px;
+      font-size: clamp(2.8rem, 7vw, 4.7rem);
+    }
+
+    h2 {
+      margin: 0 0 24px;
+      font-size: clamp(1.8rem, 4vw, 2.3rem);
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      font-size: 1.3rem;
+    }
+
+    p {
+      margin: 0 0 16px;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 0.87rem;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: var(--accent);
+      color: var(--background);
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--background);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 76px;
+      padding-block: 14px;
+    }
+
+    .brand {
+      color: var(--text);
+      font-weight: 750;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-links li + li {
+      margin-top: 0;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      max-width: 850px;
+      padding-block: 84px 54px;
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+    }
+
+    .hero-description {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 18px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.93rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: var(--background);
+    }
+
+    .button.primary:hover {
+      border-color: var(--accent-hover);
+      background: var(--accent-hover);
+      color: var(--background);
+    }
+
+    section {
+      padding-block: 42px;
+    }
+
+    .card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .featured {
+      border-top: 3px solid var(--accent);
+    }
+
+    .project-grid,
+    .skills-grid,
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .project-grid {
+      margin-top: 22px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tags li {
+      margin: 0;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface-alt);
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .project-points {
+      margin-block: 18px;
+    }
+
+    details {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--background);
+    }
+
+    summary {
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    details p {
+      margin: 14px 0 0;
+    }
+
+    .screenshot-grid {
+      margin-top: 26px;
+    }
+
+    figure {
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--background);
+    }
+
+    figure a {
+      display: block;
+    }
+
+    figure img {
+      width: 100%;
+    }
+
+    figcaption {
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .additional-project {
+      margin-top: 22px;
+      padding: 22px 26px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .additional-project p:last-child {
+      margin-bottom: 0;
+    }
+
+    .date {
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 0.86rem;
+    }
+
+    .organisation {
+      margin-bottom: 14px;
+      color: var(--muted);
+    }
+
+    .education-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .education-item {
+      padding-block: 22px;
+    }
+
+    .education-item:first-child {
+      padding-top: 0;
+    }
+
+    .education-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .education-item + .education-item {
+      border-top: 1px solid var(--border);
+    }
+
+    .education-item p:last-child,
+    .skill-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .resume-panel,
+    .contact-panel {
+      padding: 30px;
+    }
+
+    .site-footer {
+      margin-top: 36px;
+      padding-block: 26px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 850px) {
+      .navigation {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      html {
+        scroll-padding-top: 150px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding-block: 52px 30px;
+      }
+
+      .project-grid,
+      .skills-grid,
+      .screenshot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding-block: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .card,
+      .resume-panel,
+      .contact-panel,
+      .additional-project {
+        padding: 21px;
+      }
+
+      .nav-links {
+        gap: 8px 14px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    @media print {
+      :root {
+        color-scheme: light;
+        --background: #ffffff;
+        --surface: #ffffff;
+        --surface-alt: #ffffff;
+        --text: #111111;
+        --muted: #444444;
+        --accent: #175c50;
+        --accent-hover: #175c50;
+        --border: #cccccc;
+      }
+
+      .site-header,
+      .skip-link,
+      .screenshot-grid,
+      .site-footer {
+        display: none;
+      }
+
+      .hero,
+      section {
+        padding-block: 18px;
+      }
+
+      .project-grid,
+      .skills-grid {
+        display: block;
+      }
+
+      .card,
+      .additional-project {
+        margin-bottom: 16px;
+        break-inside: avoid;
+      }
+
+      .button {
+        background: #ffffff;
+        color: #175c50;
+      }
+
+      .button.primary {
+        background: #ffffff;
+        color: #175c50;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container navigation" aria-label="Main navigation">
+      <a class="brand" href="#home">Bhanu Agarwal</a>
+
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience & Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#resume">Résumé</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container">
+    <div id="home" class="hero">
+      <p class="eyebrow">Trier, Germany · NLP & Python</p>
+
+      <h1>Bhanu Agarwal</h1>
+
+      <p class="hero-subtitle">
+        M.Sc. Natural Language Processing student
+        at the University of Trier.
+      </p>
+
+      <p class="hero-description">
+        I build Python projects for searching text, extracting
+        information, and analysing data. I am seeking internship
+        and working-student roles in NLP, applied AI, and data analysis
+        across Germany.
+      </p>
+
+      <div class="actions">
+        <a class="button primary" href="#projects">View projects</a>
+        <a class="button" href="#resume">View résumé</a>
+        <a class="button" href="mailto:bhanuagarwal841@gmail.com">
+          Contact me
+        </a>
+      </div>
+    </div>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Selected projects</h2>
+
+      <article class="card featured">
+        <p class="eyebrow">Text processing & search</p>
+        <h3>JobFit Navigator</h3>
+
+        <p>
+          A Python app for saving job listings, reviewing their
+          requirements, and searching a collection.
+        </p>
+
+        <ul class="project-points">
+          <li>
+            Built a Streamlit interface with SQLite storage for
+            listings, application status, and profile notes.
+          </li>
+          <li>
+            Added rule-based requirement matching and review notes
+            linked to the original listing text.
+          </li>
+          <li>
+            Implemented keyword, semantic, and hybrid search,
+            with location and work-type filters.
+          </li>
+        </ul>
+
+        <ul class="tags" aria-label="JobFit technologies">
+          <li>Python</li>
+          <li>Streamlit</li>
+          <li>SQLite</li>
+          <li>BM25</li>
+          <li>Sentence Transformers</li>
+        </ul>
+
+        <div class="actions">
+          <a
+            class="button primary"
+            href="https://jobfit-navigator.streamlit.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Open demo ↗</a>
+
+          <a
+            class="button"
+            href="https://github.com/bhanu613/jobfit-navigator"
+            target="_blank"
+            rel="noopener noreferrer"
+          >View code ↗</a>
+        </div>
+
+        <p class="small" style="margin-top: 14px;">
+          The demo uses fictional data in a temporary workspace.
+          Do not use it to store personal information.
+        </p>
+
+        <div class="screenshot-grid">
+          <figure>
+            <a
+              href="https://raw.githubusercontent.com/bhanu613/jobfit-navigator/439e611ada61a923ffecb39c95a4234f47d901d7/docs/screenshots/comparison-coordinated-requirements.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open full-size JobFit requirement comparison screenshot"
+            >
+              <img
+                src="https://raw.githubusercontent.com/bhanu613/jobfit-navigator/439e611ada61a923ffecb39c95a4234f47d901d7/docs/screenshots/comparison-coordinated-requirements.png"
+                alt="JobFit requirement comparison showing Python and SQL requirements alongside profile notes."
+                loading="lazy"
+                decoding="async"
+              >
+            </a>
+
+            <figcaption>
+              Requirement comparison using test listings.
+              Select the image to enlarge.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <a
+              href="https://raw.githubusercontent.com/bhanu613/jobfit-navigator/439e611ada61a923ffecb39c95a4234f47d901d7/docs/screenshots/search-bm25-aws.png"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open full-size JobFit keyword search screenshot"
+            >
+              <img
+                src="https://raw.githubusercontent.com/bhanu613/jobfit-navigator/439e611ada61a923ffecb39c95a4234f47d901d7/docs/screenshots/search-bm25-aws.png"
+                alt="JobFit keyword search for AWS across saved job listings."
+                loading="lazy"
+                decoding="async"
+              >
+            </a>
+
+            <figcaption>
+              BM25 keyword search using test listings.
+              Select the image to enlarge.
+            </figcaption>
+          </figure>
+        </div>
+
+        <details>
+          <summary>Technical details</summary>
+
+          <p>
+            Keyword search uses BM25. Semantic search uses a pretrained
+            multilingual Sentence Transformers model over overlapping
+            text passages. Hybrid search combines both rankings using
+            reciprocal rank fusion, with metadata filters applied
+            before ranking.
+          </p>
+
+          <p>
+            Requirement matching uses concept names, aliases, and
+            contextual rules for supported English and German wording.
+          </p>
+
+          <p>
+            <a
+              href="https://github.com/bhanu613/jobfit-navigator/blob/main/docs/ARCHITECTURE.md"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Architecture ↗</a>
+            ·
+            <a
+              href="https://github.com/bhanu613/jobfit-navigator/blob/main/docs/LIMITATIONS.md"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Limitations ↗</a>
+          </p>
+        </details>
+      </article>
+
+      <div class="project-grid">
+        <article class="card">
+          <p class="eyebrow">NLP & evaluation</p>
+          <h3>Technical Skill Extraction</h3>
+
+          <p>
+            Rule-based extraction of technical skills from
+            English IT job descriptions.
+          </p>
+
+          <ul class="project-points">
+            <li>
+              Built strict and alias-aware matchers using a
+              fixed 20-label skill lexicon.
+            </li>
+            <li>
+              Evaluated against manually annotated labels
+              using a reproducible 200/100 document split.
+            </li>
+            <li>
+              Improved micro-F1 from 0.862 to 0.984 on the
+              evaluation corpus, recovering 80 of 92
+              baseline false negatives.
+            </li>
+          </ul>
+
+          <ul class="tags" aria-label="Skill extraction technologies">
+            <li>Python</li>
+            <li>Regular expressions</li>
+            <li>Lexicon matching</li>
+            <li>Precision / recall / F1</li>
+          </ul>
+
+          <div class="actions">
+            <a
+              class="button"
+              href="https://github.com/bhanu613/alias-aware-technical-skill-extraction"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Code & evaluation ↗</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">University group project</p>
+          <h3>U.S. Amazon Customer Value Analytics</h3>
+
+          <p>
+            Analysis of purchase and survey data to explore
+            customer behaviour and predict customer value.
+          </p>
+
+          <ul class="project-points">
+            <li>
+              Contributed visualisations, dashboard support,
+              and business insights.
+            </li>
+            <li>
+              Collaborated on customer-value classification
+              using purchase and survey data.
+            </li>
+            <li>
+              The team's tuned Gradient Boosting model achieved
+              0.920 ROC-AUC and 0.740 F1 on a held-out test set.
+            </li>
+          </ul>
+
+          <ul class="tags" aria-label="Analytics technologies">
+            <li>Python</li>
+            <li>pandas</li>
+            <li>scikit-learn</li>
+            <li>Matplotlib</li>
+            <li>Seaborn</li>
+          </ul>
+
+          <div class="actions">
+            <a
+              class="button"
+              href="https://github.com/bhanu613/U.S.-Amazon-customer-analytics"
+              target="_blank"
+              rel="noopener noreferrer"
+            >View project ↗</a>
+          </div>
+        </article>
+      </div>
+
+      <article class="additional-project">
+        <p class="eyebrow">Additional project</p>
+        <h3>Road Lane Detection</h3>
+
+        <p class="muted">
+          A classical OpenCV pipeline using Canny edges,
+          region-of-interest masking, and Hough transforms to
+          overlay detected lane lines on driving-video frames.
+        </p>
+
+        <p>
+          <a
+            href="https://github.com/bhanu613/roadlane"
+            target="_blank"
+            rel="noopener noreferrer"
+          >View project ↗</a>
+        </p>
+      </article>
+    </section>
+
+    <section id="experience" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Experience</h2>
+
+      <article class="card">
+        <p class="date">January 2023 – March 2023</p>
+        <h3>Software Development Intern</h3>
+
+        <p class="organisation">
+          Capella Infotech Solutions · Chennai, India
+        </p>
+
+        <ul>
+          <li>
+            Fixed software bugs and implemented logic specified
+            by senior developers.
+          </li>
+          <li>
+            Labelled and segmented customer reviews for a
+            sentiment-classification project.
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="education" aria-labelledby="education-heading">
+      <h2 id="education-heading">Education</h2>
+
+      <div class="card education-list">
+        <article class="education-item">
+          <p class="date">April 2025 – present</p>
+          <h3>M.Sc. Natural Language Processing</h3>
+          <p class="muted">University of Trier, Germany</p>
+        </article>
+
+        <article class="education-item">
+          <p class="date">October 2023 – March 2025</p>
+          <h3>Master's studies in Data Science</h3>
+          <p class="muted">FAU Erlangen-Nürnberg, Germany</p>
+          <p>
+            Transferred to Trier to specialise in
+            Natural Language Processing.
+          </p>
+        </article>
+
+        <article class="education-item">
+          <p class="date">July 2019 – May 2023</p>
+          <h3>B.Tech. Computer Science and Engineering</h3>
+          <p class="muted">
+            Vellore Institute of Technology, India
+          </p>
+          <p>Final grade: 8.22/10.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Tools & methods</h2>
+
+      <div class="skills-grid">
+        <article class="card skill-card">
+          <h3>Python applications</h3>
+          <p class="muted">
+            Python, Streamlit, SQLite, Git, and GitHub.
+          </p>
+        </article>
+
+        <article class="card skill-card">
+          <h3>Text processing & search</h3>
+          <p class="muted">
+            Text normalisation, regular expressions, lexicon
+            matching, BM25, pretrained sentence embeddings,
+            and hybrid search.
+          </p>
+        </article>
+
+        <article class="card skill-card">
+          <h3>Data analysis</h3>
+          <p class="muted">
+            pandas, NumPy, scikit-learn, exploratory analysis,
+            Matplotlib, and Seaborn.
+          </p>
+        </article>
+
+        <article class="card skill-card">
+          <h3>Evaluation</h3>
+          <p class="muted">
+            Manual annotation, precision, recall, F1,
+            error analysis, and classification metrics.
+          </p>
+        </article>
+      </div>
+
+      <p class="small" style="margin-top: 18px;">
+        Languages: English C1 · German A1
+        <span>(self-reported)</span>
+      </p>
+    </section>
+
+    <section id="resume" aria-labelledby="resume-heading">
+      <div class="card resume-panel">
+        <h2 id="resume-heading">Résumé</h2>
+
+        <p class="muted">
+          My education, internship experience, selected projects,
+          and technical skills in one PDF.
+        </p>
+
+        <!--
+          Upload your reviewed public-facing NLP/retrieval résumé
+          as resume.pdf beside this index.html file.
+          Do not upload official transcripts or identity documents.
+        -->
+
+        <div class="actions">
+          <a
+            class="button primary"
+            href="./resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Open résumé PDF ↗</a>
+
+          <a
+            class="button"
+            href="./resume.pdf"
+            download="Bhanu_Agarwal_Resume.pdf"
+          >Download résumé</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="card contact-panel">
+        <h2 id="contact-heading">Contact</h2>
+
+        <p class="muted">
+          For internship, working-student, or project enquiries,
+          contact me by email or LinkedIn.
+        </p>
+
+        <p>
+          <a href="mailto:bhanuagarwal841@gmail.com">
+            bhanuagarwal841@gmail.com
+          </a>
+        </p>
+
+        <div class="actions">
+          <a
+            class="button"
+            href="https://github.com/bhanu613"
+            target="_blank"
+            rel="noopener noreferrer"
+          >GitHub ↗</a>
+
+          <a
+            class="button"
+            href="https://www.linkedin.com/in/agarwalbhanu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>Bhanu Agarwal · Trier, Germany</span>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+</body>
+</html>
