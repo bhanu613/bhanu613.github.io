@@ -807,7 +807,47 @@
           </p>
         </details>
       </article>
+      <article class="card" style="margin-top: 22px;">
+        <p class="eyebrow">Local question answering</p>
+        <h3>Job Description RAG</h3>
 
+        <p>
+          A local Python app that answers questions over 40 historical
+          job descriptions and lets users inspect the source passages.
+        </p>
+
+        <ul class="project-points">
+          <li>
+            Prepared and split descriptions into overlapping passages,
+            then indexed them in ChromaDB using nomic-embed-text.
+          </li>
+          <li>
+            Used Ollama with llama3.2:3b to generate answers from
+            retrieved passages and display them in Streamlit.
+          </li>
+          <li>
+            Added response-format and source-ID checks, and documented
+            answer reviews and observed errors.
+          </li>
+        </ul>
+
+        <ul class="tags" aria-label="RAG project technologies">
+          <li>Python</li>
+          <li>Ollama</li>
+          <li>ChromaDB</li>
+          <li>Streamlit</li>
+          <li>RAG</li>
+        </ul>
+
+        <div class="actions">
+          <a
+            class="button"
+            href="https://github.com/bhanu613/job-description-rag"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Code, screenshots &amp; evaluation</a>
+        </div>
+      </article>
       <div class="project-grid">
         <article class="card">
           <p class="eyebrow">NLP & evaluation</p>
@@ -949,7 +989,6 @@
         </article>
 
         <article class="education-item">
-          <p class="date">October 2023 – March 2025</p>
           <h3>Master's studies in Data Science</h3>
           <p class="muted">FAU Erlangen-Nürnberg, Germany</p>
           <p>
@@ -976,7 +1015,8 @@
         <article class="card skill-card">
           <h3>Python applications</h3>
           <p class="muted">
-            Python, Streamlit, SQLite, Git, and GitHub.
+            Python, Streamlit, SQLite, ChromaDB, Ollama,
+            Git, and GitHub.
           </p>
         </article>
 
@@ -985,7 +1025,7 @@
           <p class="muted">
             Text normalisation, regular expressions, lexicon
             matching, BM25, pretrained sentence embeddings,
-            and hybrid search.
+            hybrid search, and retrieval-augmented generation.
           </p>
         </article>
 
